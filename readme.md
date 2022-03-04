@@ -1,6 +1,5 @@
 # Wack-a-Mole
-Stuyvesant High School SoftDev Course P01&lt;Project 2><br>
-*note: breaks do happen occasionally, simply repeating the action will fix them
+Stuyvesant High School SoftDev Course Project 2<br>
 
 ## Roster
 Patrick Ging (PM)<br>
