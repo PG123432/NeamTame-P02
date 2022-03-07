@@ -1,0 +1,8 @@
+Neam Time - Pat Ging, Aaron Contreras, Deven Maheshwari, David Chong
+SoftDev
+P02:
+2022-03-07
+
+devenM -- 2021-03-07 11:02
+Added file structure as well as updated design doc. Made changes based 
+on class revisions. Included is the team flag. 
