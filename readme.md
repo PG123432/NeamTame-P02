@@ -1,4 +1,4 @@
-# Whack-A-Mole by Neam Time
+# Wack-A-Mole by Neam Time
 Neam Time - Pat Ging, Aaron Contreras, Deven Maheshwari, David Chong, Ryan Wang Pd. 1 <br>
 SoftDev <br>
 P02: <br>
@@ -11,7 +11,7 @@ David Chong (Devo) - Routes.py, minigame 2: Game modes <br>
 Ryan Wang (Devo) - CSS <br>
 
 ## App Description
-Enhanced Whack-A-Mole. This app will allow the user to rediscover their love for the classic game Whack-A-Mole with various minigame additions. One plan is diving into the mole's perspective and having the user avoid falling hammer. We will also explore game modes, altering speed and accuracy for the user. Our leaderboard will show who the best Whack-A-Mole enhanced player is in the end. 
+Enhanced Wack-A-Mole. This app will allow the user to rediscover their love for the classic game Wack-A-Mole with various minigame additions. One plan is diving into the mole's perspective and having the user avoid falling hammer. We will also explore game modes, altering speed and accuracy for the user. Our leaderboard will show who the best Wack-A-Mole enhanced player is in the end. 
 
 ## Launch Codes
 Be sure to have python3 and pip3 installed. 
