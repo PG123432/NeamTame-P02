@@ -10,3 +10,7 @@ is the team flag. Also added basic functionality to requirements.
 
 devenM -- 2021-03-08 08:36
 Updated readme with launchcodes and repushed team flag and design doc.  
+
+aaronC -- 2021-03-08 08:37
+Added basic working app
+
