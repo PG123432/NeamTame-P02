@@ -7,3 +7,6 @@ devenM -- 2021-03-07 11:02
 Added file structure as well as updated design doc. Made changes based 
 on class revisions (bootstrap, datatypes for sqlite columns). Included 
 is the team flag. Also added basic functionality to requirements. 
+
+devenM -- 2021-03-08 08:36
+Updated readme with launchcodes and repushed team flag and design doc.  
