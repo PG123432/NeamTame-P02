@@ -1,17 +1,3 @@
-let score = 0
-let lives = 0
-let 
-
-
-
-
-
-
-<<<<<<< HEAD:prototype/animate.js
-var randtime = (min, max) => {
-  return Math.round(Math.random() * (max - min) + max)
-}
-=======
 var requestID;  //init global var for use with animation frames
 
 
@@ -67,4 +53,4 @@ var stopIt = () => {
 
 stopButton.addEventListener( "click",  stopIt );
 playButton.addEventListener( "click" , hammerFall);
->>>>>>> c6cf28e271a67de2a610ec4457b57a4e332a5d1f:prototype/minigame.js
+
