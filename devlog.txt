@@ -16,3 +16,6 @@ Added basic working app
 
 davidC -- 2022-03-08 08:41
 Added prototype folder, will work on basic animation/game stuff in there while general project is being built
+
+patrick^ -- 2022-03-10 08:41
+Changing the css, investigating new ideas for it. Resourcing....
