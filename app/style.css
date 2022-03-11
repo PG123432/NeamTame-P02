@@ -1,5 +1,17 @@
 
+/* Navbar stuffs */
 
-navbar-neamtime {
-	transform : skew(-21 deg);
+nav.navbar-neamtime {
+	transform : skew(-210deg);
 }
+
+/* Utility divs */
+
+outer_wrapper {
+	display : flex;
+	flex-direction: row;
+}
+
+/* misc */
+
+h3 {transform: skew(-200deg)}
