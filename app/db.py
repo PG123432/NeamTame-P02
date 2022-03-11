@@ -5,7 +5,7 @@
 
 import sqlite3
 
-DB_FILE = "MWackAMole.db"
+DB_FILE = "WackAMole.db"
 
 def setup():
     db = sqlite3.connect(DB_FILE)
@@ -30,7 +30,7 @@ def signup(username, password):
     c = db.cursor()
 
     # checks if username already exists
-    c.execute("""SELECT username FROM users WHERE username=?""",[username])
+    c.execute("SELECT username FROM users WHERE username=?",[username])
     result = c.fetchone()
 
 
@@ -70,7 +70,7 @@ def get_id(username):
     return user_id
 
 # gets the username from the user_id
-desernamef get_username(user_id):
+def get_username(user_id):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
@@ -97,65 +97,36 @@ def get_topscore(user_id):
 
 # Leaderboard Database Stuff: 
 
+# Add score and user to leaderboard
 def addToLeaderboard():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
     c.execute('INSERT INTO leaderboard (username, score) VALUES (?, ?)', (username, score))
+    result = c.fetchone()
+
+
+    db.commit()
+    db.close()
+    
+    return result
+
+# Gets top value of the leaderboard
+def getLeaderboard():
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    c.execute('SELECT score FROM leaderboard ORDER BY score ASC)')
+    top = c.fetchall()
 
     db.commit()
     db.close()
 
+    return top
 
+def main():
+    setup()
+    signup("Test", "pass")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def new_search(movie, user_id, imdb_id):
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-
-    c.execute('INSERT INTO searches (movie, user_id, imdb_id) VALUES (?, ?, ?)', (movie, user_id, imdb_id))
-    c.execute('SELECT * FROM searches')
-    print(c.fetchall())
-
-    db.commit()
-    db.close()
-
-def get_user_searches(user_id):
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-
-    all = []
-
-    c.execute('SELECT movie, imdb_id, timestamp FROM searches WHERE user_id=? ORDER BY timestamp DESC', [user_id])
-    searches = c.fetchall()
-
-    for s in searches:
-        all.append(s)
-
-    dic = []
-    keys = ('title', 'imdb_id', 'timestamp')
-    for a in all:
-        res = {}
-        res = {keys[i] : a[i] for i, _ in enumerate(a)}
-        dic.append(res)
-
-    return dic
+if __name__ == "__main__":
+    main()
