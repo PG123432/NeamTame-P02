@@ -1,3 +1,8 @@
+# Neam Time - Pat Ging, Aaron Contreras, Deven Maheshwari, David Chong, Ryan Wang
+# SoftDev
+# P02 - Client-Side Shenanigans 
+# 2022-03-10
+
 from flask import Flask
 app = Flask(__name__) #create instance of class Flask
 
