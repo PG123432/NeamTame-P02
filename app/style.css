@@ -2,7 +2,15 @@
 /* Navbar stuffs */
 
 nav.navbar-neamtime {
-	transform : skew(-210deg);
+	transform : skew(-15deg);
+	width: 80%;
+	margin: 0 auto;
+
+	}
+
+navbar-button {
+	margin: 10px;
+	line-height: match-parent;
 }
 
 /* Utility divs */
@@ -14,4 +22,4 @@ outer_wrapper {
 
 /* misc */
 
-h3 {transform: skew(-200deg)}
+h3 {transform: skew(-200deg);}
