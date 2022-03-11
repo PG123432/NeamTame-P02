@@ -23,3 +23,6 @@ Changing the css, investigating new ideas for it. Resourcing....
 devenM -- 2021-03-11 08:16
 Added db maker file for users and leaderboard data. Methods for users to getID, get topscore.
 Methods for leaderboard to add score to leaderboard.
+
+patrickG ryanW - 2022-03-01 08:39
+Making more changes to the css and html
