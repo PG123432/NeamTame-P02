@@ -2,19 +2,19 @@
 /* Navbar stuffs */
 
 body {
-	background-image: url("8bit.jpg");
-	background-repeat: round;
+	background-image: url("../templates/8bit.png");
+	background-repeat: repeat;
 }
 
 
 
 .navbar-light .navbar-brand {
-	color : #ffdf00 ; 
+	color : #FFFFFF; 
 	font-family: sans-serif;
 }
 
 .navbar-light .navbar-nav .nav-link {
-	color : #ffdf00 ; 
+	color : #FFFFFF; 
 	font-family: sans-serif;
 }
 
@@ -24,7 +24,7 @@ navbar-button {
 }
 nav.navbar-neamtime {
 	margin: 0 auto;
-	background-color: #0a192c !important;
+	background-color: #d64161 !important;
 
 	}
 

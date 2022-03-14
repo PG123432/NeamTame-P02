@@ -26,3 +26,8 @@ Methods for leaderboard to add score to leaderboard.
 
 patrickG ryanW - 2022-03-01 08:39
 Making more changes to the css and html
+
+patrickG - 2022-03-13 22:00
+Finishing home page
+Fixing structure of the web app
+Reading
