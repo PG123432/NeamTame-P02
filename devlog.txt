@@ -37,3 +37,6 @@ added prototype of page, will add with canvas
 
 davidC - 2022-03-14 08:43
 added onto prototype
+
+patrickG - 2022-03-14 10:44
+Fixed bug where the fonts at the top of the navbar were in a serif (fixed now)
