@@ -1,0 +1,41 @@
+
+/* Navbar stuffs */
+
+body {
+	background: #F7C5CC !important;
+}
+
+
+
+.navbar-light .navbar-brand {
+	color : #FFFFFF; 
+	font-family: sans-serif;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color : #FFFFFF; 
+	font-family: sans-serif;
+}
+
+navbar-button {
+	margin: 10px;
+	line-height: match-parent;
+}
+nav.navbar-neamtime {
+	margin: 0 auto;
+	background-color: #d64161 !important;
+
+	}
+
+
+/* Utility divs */
+
+outer_wrapper {
+	display : flex;
+	flex-direction: column;
+}
+
+
+/* misc */
+
+h3 {transform: skew(-200deg);}
