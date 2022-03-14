@@ -1,43 +1,44 @@
-const holes = document.querySelectorAll('.hole');
-const scoreBoard = document.querySelector('.score');
+const c = document.getElementById("playground");
+var ctx = c.getContext("2d");
+
+const start = document.getElementById("startGame");
+const scoreBoard = document.getElementById("score");
 const moles = document.querySelectorAll('.mole');
 let lastHole;
-let LivesLeft = false;
 let score = 0;
 
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
-function randomHole(holes){
-    const index  = Math.floor(Math.random() * holes.length);
-    const hole = holes[index];
+// function randomHole(holes){
+//     const index  = Math.floor(Math.random() * holes.length);
+//     const hole = holes[index];
+//     if (hole === lastHole){
+//         return randomHole(holes);
+//     }
+//     lastHole = hole;
+//     return hole;
+// }
 
-    if (hole === lastHole){
-        return randomHole(holes);
-    }
-    lastHole = hole;
-    return hole;
-}
-
-function peep() {
-    const time = randomTime(500, 1000); 
-    const hole = randomHole(holes); 
-}
+// function peep() {
+//     // const time = randomTime(500, 1000); 
+//     // const hole = randomHole(holes); 
+//     peep()
+// }
 
 function startGame() {
+    console.log("restarted game");
     scoreBoard.textContent = 0;
-    LivesLeft = 3;
     score = 0;
-    peep();
-    setTimeout(() => LivesLeft = true, 15000) 
+    // peep();
 }
 
 function wack(e){
     score++;
-    this.parentNode.classList.remove('up');
     scoreBoard.textContent = score;
 }
 
-moles.forEach(mole => mole.addEventListener('click', wack))
-c
+// moles.forEach(mole => mole.addEventListener('click', wack));
+c.addEventListener( "click", wack);
+start.addEventListener( "click", startGame);
