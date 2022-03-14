@@ -31,3 +31,6 @@ patrickG - 2022-03-13 22:00
 Finishing home page
 Fixing structure of the web app
 Reading
+
+davidC - 2022-03-13 22:54
+added prototype of page, will add with canvas 
