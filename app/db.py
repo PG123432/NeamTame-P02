@@ -105,7 +105,6 @@ def addToLeaderboard(username, score):
     c.execute('INSERT INTO leaderboard (username, score) VALUES (?, ?)', [username, score])
     result = c.fetchone()
 
-
     db.commit()
     db.close()
     
@@ -116,7 +115,7 @@ def getLeaderboard():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    c.execute('SELECT score FROM leaderboard ORDER BY score ASC)')
+    c.execute('SELECT * FROM leaderboard ORDER BY score ASC')
     top = c.fetchall()
 
     db.commit()
@@ -125,8 +124,7 @@ def getLeaderboard():
     return top
 
 def main():
-    print(addToLeaderboard("Test", 100))
-    #print(getLeaderboard())
+    print(getLeaderboard())
 
 if __name__ == "__main__":
     main()
