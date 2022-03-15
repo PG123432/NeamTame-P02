@@ -40,3 +40,6 @@ added onto prototype
 
 patrickG - 2022-03-14 10:44
 Fixed bug where the fonts at the top of the navbar were in a serif (fixed now)
+
+aaronC - 2022-03-15 8:27
+Added basic minigame template and requisite files
