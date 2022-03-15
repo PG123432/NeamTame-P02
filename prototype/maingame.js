@@ -1,44 +1,45 @@
 const c = document.getElementById("playground");
 var ctx = c.getContext("2d");
-
 const start = document.getElementById("startGame");
 const scoreBoard = document.getElementById("score");
-const moles = document.querySelectorAll('.mole');
 let lastHole;
+let timeUp = false;
 let score = 0;
 
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
-// function randomHole(holes){
-//     const index  = Math.floor(Math.random() * holes.length);
-//     const hole = holes[index];
-//     if (hole === lastHole){
-//         return randomHole(holes);
-//     }
-//     lastHole = hole;
-//     return hole;
-// }
-
-// function peep() {
-//     // const time = randomTime(500, 1000); 
-//     // const hole = randomHole(holes); 
-//     peep()
-// }
-
-function startGame() {
-    console.log("restarted game");
-    scoreBoard.textContent = 0;
-    score = 0;
-    // peep();
+function randomHole(holes){
+    const index  = Math.floor(Math.random() * holes.length);
+    const hole = holes[index];
+    if (hole === lastHole){
+        return randomHole(holes);
+    }
+    lastHole = hole;
+    return hole;
 }
 
-function wack(e){
+function peep() {
+    const time = randomTime(200, 1000);
+    const hole = randomHole(holes);
+    setTimeout(() => {
+      if (!timeUp) peep();
+    }, time);
+  }
+
+  function startGame() {
+    scoreBoard.textContent = 0;
+    timeUp = false;
+    score = 0;
+    peep();
+    setTimeout(() => timeUp = true, 10000)
+  }
+
+  function whack() { 
     score++;
     scoreBoard.textContent = score;
-}
+  }
 
-// moles.forEach(mole => mole.addEventListener('click', wack));
 c.addEventListener( "click", wack);
 start.addEventListener( "click", startGame);
