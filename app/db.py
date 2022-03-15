@@ -12,11 +12,11 @@ def setup():
     c = db.cursor()
 
     c.execute("DROP TABLE IF EXISTS leaderboard")
-    command = "CREATE TABLE leaderboard (username TEXT, score INTEGER, timestamp DATETIME DEFAULT (datetime('now','localtime')))"
+    command = "CREATE TABLE leaderboard (username TEXT, score INTEGER, timestamp DATETIME DEFAULT (datetime('now','localtime')));"
     c.execute(command)
 
     c.execute("DROP TABLE IF EXISTS users")
-    command = "CREATE TABLE users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username PRIMARY KEY TEXT, password TEXT, topscore INTEGER DEFAULT 0, timestamp DATETIME DEFAULT (datetime('now','localtime')))"
+    command = "CREATE TABLE users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, topscore INTEGER DEFAULT 100, timestamp DATETIME DEFAULT (datetime('now','localtime')));"
     c.execute(command)
 
     db.commit()
@@ -38,10 +38,10 @@ def signup(username, password):
         return "Error: Username already in use"
 
     else:
-        c.execute('INSERT INTO users VALUES (null, ?, ?)', (username, password))
+        c.execute('INSERT INTO users VALUES (null, ?, ?, null, null)',[username, password])
         db.commit()
         db.close()
-        return  False
+        return False
 
 # checks if username and password combination exists in database
 def login(username, password):
@@ -75,7 +75,7 @@ def get_username(user_id):
     c = db.cursor()
 
     username = None
-    c.execute("SELECT user_id FROM users WHERE username=?", [user_id])
+    c.execute("SELECT username FROM users WHERE user_id=?", [user_id])
     row = c.fetchone()
     if row is not None:
         username = row[0]
@@ -88,7 +88,7 @@ def get_topscore(user_id):
     c = db.cursor()
 
     topscore = None
-    c.execute("SELECT user_id FROM users WHERE topscore=?", [user_id])
+    c.execute("SELECT topscore FROM users WHERE user_id=?", [user_id])
     row = c.fetchone()
     if row is not None:
         topscore = row[0]
@@ -98,11 +98,11 @@ def get_topscore(user_id):
 # Leaderboard Database Stuff: 
 
 # Add score and user to leaderboard
-def addToLeaderboard():
+def addToLeaderboard(username, score):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    c.execute('INSERT INTO leaderboard (username, score) VALUES (?, ?)', (username, score))
+    c.execute('INSERT INTO leaderboard (username, score) VALUES (?, ?)', [username, score])
     result = c.fetchone()
 
 
@@ -125,8 +125,8 @@ def getLeaderboard():
     return top
 
 def main():
-    setup()
-    signup("Test", "pass")
+    print(addToLeaderboard("Test", 100))
+    #print(getLeaderboard())
 
 if __name__ == "__main__":
     main()
