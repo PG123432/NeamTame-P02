@@ -3,15 +3,12 @@
 # P02 - Client-Side Shenanigans 
 # 2022-03-10
 
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__) #create instance of class Flask
 
 @app.route("/")       #assign fxn to route
-def hello_world():
-    print("the __name__ of this module is... ")
-    print(__name__)
-    return "Wack-a-mole"
-
+def index():
+	return render_template("index.html")
 if __name__ == "__main__":  # true if this file NOT imported
     app.debug = True        # enable auto-reload upon code change
     app.run()
