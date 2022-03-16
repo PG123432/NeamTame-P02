@@ -1,0 +1,40 @@
+
+/* Navbar stuffs */
+
+body {
+	background-image: url("/static/img/8bit.jpg");
+	background-repeat: round;
+}
+
+
+
+.navbar-light .navbar-brand {
+	color : #ffdf00 ; 
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color : #ffdf00 ; 
+}
+
+navbar-button {
+	margin: 10px;
+	line-height: match-parent;
+}
+nav.navbar-neamtime {
+	margin: 0 auto;
+	background-color: #0a192c !important;
+
+	}
+
+
+/* Utility divs */
+
+outer_wrapper {
+	display : flex;
+	flex-direction: column;
+}
+
+
+/* misc */
+
+h3 {transform: skew(-200deg);}
