@@ -16,12 +16,12 @@ var clear = (e) => {
 };
 
 function peep() {                                       //function to make the mole peep
-  
+
   const time = randomTime(200, 1000);
   const hole = randomHole(holes);
   console.log(hole.name);
   console.log(requestID);
-  window.cancelAnimationFrame(requestID); 
+  window.cancelAnimationFrame(requestID);
 
   clear();
   ctx.beginPath();
@@ -57,7 +57,7 @@ function peep() {                                       //function to make the m
 
 
 let holes = [
-  { 
+  {
     "name": "hole1",
     "xcord": 125,
     "ycord": 250
@@ -73,7 +73,7 @@ let holes = [
     "ycord": 250
   }
   ]
-  
+
 
 function randomTime(min, max) {                         //function for random time
     return Math.round(Math.random() * (max - min) + min);
@@ -95,6 +95,11 @@ function startGame() {                                //starts the game, resets 
   scoreBoard.textContent = 0;
   timeUp = false;
   score = 0;
+  // attempting to draw the holes
+  var ctx = c.getContext("2d");                           //gives context
+  var img = document.getElementById("holes");
+  void ctx.drawImage(image, 0, 0);
+
   peep();
   setTimeout(() => timeUp = true, 10000)
 }
@@ -105,7 +110,6 @@ function whack() {                                    //adds score if clicked
   console.log("whacked!")
 }
 
-  
+
 c.addEventListener( "click", whack);
 start.addEventListener( "click", startGame);
-
