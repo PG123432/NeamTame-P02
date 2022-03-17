@@ -37,4 +37,9 @@ outer_wrapper {
 
 /* misc */
 
+leaderboard_text {
+	color : #ffdf00; 
+	/* yellow */
+}
+
 h3 {transform: skew(-200deg);}
