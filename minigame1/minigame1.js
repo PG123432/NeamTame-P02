@@ -39,6 +39,10 @@ warningImage.src = 'Warning.png';
 //initiate start x,y,dx,dy for image movement
 let x, y, dy, ay;
 
+let fps, fpsInterval, startTime, now, then, elapsed,dfps;
+
+
+
 let setHammer = (e) => {
   x = Math.floor(Math.random()*(c.width - malletImage.width));
   y = malletImage.height;
@@ -48,17 +52,41 @@ let setHammer = (e) => {
   hammerFall();
 }
 
-let warning = () =>{
+
+let setWarning = (e) => {
+  dfps = 0.03;
+  fps = 0.5;
+  
+  then = Date.now();
+  startTime = then;
+
+  x = Math.floor(Math.random()*(c.width - warningImage.width));
+  y = warningImage.height;
+  warning();
+}
+
+let warning = () => {
   console.log("warning...")
   console.log(requestID);
+  fpsInterval = 1000 / fps;
+  fps += dfps;
+  
   window.cancelAnimationFrame(requestID);
   clear();
-  ctx.beginPath();
-  ctx.drawImage(warningImage, x, y, warningImage.width, warningImage.height);
+  
+  now = Date.now();
+  elapsed = now - then;
+
+  if (elapsed > fpsInterval) {
+    then = now - (elapsed % fpsInterval);
+    
+    ctx.beginPath();
+    ctx.drawImage(warningImage, x, y, warningImage.width, warningImage.height);
+  }
   requestID = window.requestAnimationFrame(warning);
-  
-  
-}
+
+  if ()
+};
 
 let hammerFall = () => {
   console.log("hammers falling...");
@@ -93,3 +121,4 @@ var stopIt = () => {
 
 stopButton.addEventListener( "click",  stopIt );
 hammerButton.addEventListener( "click" , setHammer );
+warningButton.addEventListener( "click" , setWarning );
