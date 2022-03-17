@@ -85,7 +85,6 @@ let warning = () => {
   }
   requestID = window.requestAnimationFrame(warning);
 
-  if ()
 };
 
 let hammerFall = () => {
