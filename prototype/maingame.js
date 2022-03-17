@@ -5,29 +5,75 @@ const scoreBoard = document.getElementById("score");    //gets score button
 let lastHole;                                           //the last hole(prevents repeats)
 let timeUp = false;                                     //checks if time is up
 let score = 0;                                          //score of the user
-
+var requestID;
 var mole = new Image(50, 50)
 
-let holes = [
-{ 
-  "name": "hole1",
-  "xcord": 125,
-  "ycord": 250
-},
-{
-  "name": "hole2",
-  "xcord": 250,
-  "ycord": 250
-},
-{
-  "name": "hole3",
-  "xcord": 375,
-  "ycord": 250
+
+var clear = (e) => {
+  console.log("clear invoked...")
+  ctx.clearRect(0, 0, c.width, c.height);
+  // YOUR CODE HERE
+};
+
+function peep() {                                       //function to make the mole peep
+  
+  const time = randomTime(200, 1000);
+  const hole = randomHole(holes);
+  console.log(hole.name);
+  console.log(requestID);
+  window.cancelAnimationFrame(requestID); 
+
+  clear();
+  ctx.beginPath();
+  ctx.drawImage(mole, hole.xcord, hole.ycord, mole.width, mole.length);
+  setTimeout(() => {                                  //keeps going, sets new time
+    if (!timeUp) peep();
+  }, time);
 }
 
-]
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let holes = [
+  { 
+    "name": "hole1",
+    "xcord": 125,
+    "ycord": 250
+  },
+  {
+    "name": "hole2",
+    "xcord": 250,
+    "ycord": 250
+  },
+  {
+    "name": "hole3",
+    "xcord": 375,
+    "ycord": 250
+  }
+  ]
+  
 
 function randomTime(min, max) {                         //function for random time
     return Math.round(Math.random() * (max - min) + min);
@@ -43,30 +89,21 @@ function randomHole(holes){                             //function for random ho
     return hole;
 }
 
-function peep() {                                       //function to make the mole peep
-    const time = randomTime(200, 1000);
-    const hole = randomHole(holes);
-    console.log(hole.name)
-    setTimeout(() => {                                  //keeps going, sets new time
-      if (!timeUp) peep();
-    }, time);
-    ctx.beginPath();
-    ctx.drawImage(mole, hole.xcord, hole.ycord, mole.width, mole.length);
-  }
 
-  function startGame() {                                //starts the game, resets stats
-    scoreBoard.textContent = 0;
-    timeUp = false;
-    score = 0;
-    peep();
-    setTimeout(() => timeUp = true, 10000)
-  }
 
-  function whack() {                                    //adds score if clicked
-    score++;
-    scoreBoard.textContent = score;
-    console.log("whacked!")
-  }
+function startGame() {                                //starts the game, resets stats
+  scoreBoard.textContent = 0;
+  timeUp = false;
+  score = 0;
+  peep();
+  setTimeout(() => timeUp = true, 10000)
+}
+
+function whack() {                                    //adds score if clicked
+  score++;
+  scoreBoard.textContent = score;
+  console.log("whacked!")
+}
 
   
 c.addEventListener( "click", whack);
