@@ -45,3 +45,8 @@ Added basic minigame template and requisite files
 
 devenM -- 2022-03-16 08:34
 Finished testing database. Added funcitons to get entire tables and update topscore values. 
+
+patrickG -- 2022-03-18 08:40
+-changing the templares
+-font changing
+- implementing the new leaderboard

@@ -18,7 +18,13 @@ def index():
 
 @app.route("/leaderboards")
 def leaderboards():
+
+	#to do: add datetime parsing
+	#fix fonts
+
 	db.addToLeaderboard("patrick", 69)
+	db.addToLeaderboard("cindy", 20)
+	db.addToLeaderboard("Aron", 10)
 	return render_template("leaderboards.html",
 				scores= db.getLeaderboard())
 

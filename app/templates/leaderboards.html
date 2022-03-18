@@ -60,10 +60,12 @@
 	
 	<br>
 	<br>
+	
+	<h1 style="color: white; text-align: center; font-size: 100px; font-weight: bold;">Leaderboards</h1>
 
 
 	{% for entry in scores %}
-		<h1 class="leaderboard_text">{{ entry }}</h1>
+		<h1 class="text-center" style="color : white;">{{ entry.2 }} {{ entry.0 }} {{ entry.1}} </h1>
 	{% endfor %}
 
 </body>
