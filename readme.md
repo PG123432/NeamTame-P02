@@ -4,7 +4,7 @@ SoftDev <br>
 P02: <br>
 
 ## Roster and Roles
-Patrick Ging (PM) - Bootstrap/HTML frontend. JS animations <br>
+Patrick Ging (PM) - Bootstrap/HTML frontend. Backend <br>
 Aaron Contreras (Devo) - Routes.py, minigame 1: Mole Perspective <br>
 Deven Maheshwari (Devo) - Sqlite & JS animations <br>
 David Chong (Devo) - Routes.py, minigame 2: Game modes <br>
