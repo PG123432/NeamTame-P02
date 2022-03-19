@@ -6,79 +6,81 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 
-	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-
-	<body>
+<body>
 
 	<!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-secondary navbar-light navbar-neamtime">
+<nav class="navbar navbar-expand-md bg-secondary navbar-dark navbar-neamtime">
   <!-- Container wrapper -->
   <div class="container-fluid">
 
+
     <!-- Navbar brand -->
-    <a class="navbar-brand" style="font-weight:  bold;" href="/">Wack-a-mole</a>
+    <a class="navbar-brand" style="font-weight:  bold; font-family: spaceInvaders;" href="/">Wack-a-mole</a>
 
-    <!-- Toggle button -->
-    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button>
+    <!-- Hamburger -->
 
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <!-- end of hamburger -->
+
+
+    <!-- Collapsible Content -->
+    <div class="navbar-collapse collapse" id="nav">
+      <ul class="navbar-nav">
 
         <!-- Link -->
         <li class="nav-item" >
-          <a class="nav-link"  style="font-weight:  bold;" href="/play">Play!</a>
+          <a class="nav-link"  style="font-weight:  bold; font-family: spaceInvaders;" href="/play">Play!</a>
         </li>
 
         <li class="nav-item" >
-          <a class="nav-link" style="font-weight:  bold;" href="/leaderboards">Leaderboards!</a>
+          <a class="nav-link" style="font-weight:  bold; font-family: spaceInvaders;" href="/leaderboards">Leaderboards!</a>
         </li>
         <li class="nav-item" >
-          <a class="nav-link" style="font-weight:  bold;" href="/signUp">Sign Up!</a>
+          <a class="nav-link" style="font-weight:  bold; font-family: spaceInvaders;" href="/signUp">Sign Up!</a>
         </li>
         <li class="nav-item" >
-          <a class="nav-link" style="font-weight:  bold;" href="/signIn">Sign In!</a>
-        </li>
-      </ul>
-
-      <!-- Icons -->
-      <ul class="navbar-nav d-flex flex-row me-1">
-        <li class="nav-item me-3 me-lg-0">
-          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
-        </li>
-        <li class="nav-item me-3 me-lg-0">
-          <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="nav-link" style="font-weight:  bold; font-family: spaceInvaders;" href="/signIn">Sign In!</a>
         </li>
       </ul>
 
     </div>
+
+    <!-- End of CC -->
+   
+
+
   </div>
-  <!-- Container wrapper -->
 </nav>
-<!-- Navbar -->
+
+<!-- End of Navbar -->
 
   <br>
   <br>
+
+  {% block content %}
   <h1 style="color: white; text-align: center; font-size: 100px; font-weight: bold; font-family: SpaceInvaders;">Wack-a-mole</h1>
 
   <br>
   <br>
 
-  <p style="color: white; text-align: center; font-weight: bold;">Play the legendary game REVAMPED. Login to save your progress and to become the wackest player of them all! :p</p>
+  <p style="color: white; text-align: center; font-weight: bold; font-family: SpaceInvaders;">Play the legendary game REVAMPED. Login to save your progress and to become the wackest player of them all! :p</p>
 
   <br>
   <br>
 
   <center>  
-    <button type="button" class="btn-lg btn-warning" > <a href="/signIn"> Sign In! </a> </button>
+    <button type="button" class="btn-lg btn-warning" > <a href="/signIn" style="font-family: SpaceInvaders;"> Sign In! </a> </button>
 
-    <button type="button" class="btn-lg btn-warning" > <a href="/leaderboards"> Leaderboards! </a></button>
+    <button type="button" class="btn-lg btn-warning" > <a href="/leaderboards" style="font-family: SpaceInvaders;"> Leaderboards! </a></button>
 
   </center>
 
+  {% endblock %}
 
 	</body>
 

@@ -18,15 +18,20 @@ def index():
 
 @app.route("/leaderboards")
 def leaderboards():
-
-	#to do: add datetime parsing
-	#fix fonts
-
-	db.addToLeaderboard("patrick", 69)
-	db.addToLeaderboard("cindy", 20)
-	db.addToLeaderboard("Aron", 10)
 	return render_template("leaderboards.html",
 				scores= db.getLeaderboard())
+
+@app.route("/signUp")
+def signUp():
+	return render_template("signUp.html")
+
+@app.route("/signIn")
+def signIn():
+	return render_template("signIn.html")
+
+@app.route("/play")
+def play():
+	return render_template("play.html")
 
 if __name__ == "__main__":  # true if this file NOT imported
     app.debug = True        # enable auto-reload upon code change

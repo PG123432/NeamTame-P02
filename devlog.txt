@@ -50,3 +50,11 @@ patrickG -- 2022-03-18 08:40
 -changing the templares
 -font changing
 - implementing the new leaderboard
+
+patrickG -- 2022-03-19 14:39
+- implementing new font
+- used inherited templates
+- adding more connectivity
+- housekeeping
+- hamburger menu implemented 
+- ** BUG Hamburger menu wont uncollapse on some browsers...

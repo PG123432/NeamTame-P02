@@ -1,3 +1,13 @@
+/* fonts */
+
+@font-face {
+	font-family: "spaceInvaders";
+	src: url("/static/fonts/space_invaders.woff") format("woff"),
+		 url("/static/fonts/space_invaders.eot") format("embedded-opentype"),
+		 url("/static/fonts/space_invaders.woff") format("truetype");
+	font-weight: normal;
+}
+
 
 /* Navbar stuffs */
 
@@ -8,11 +18,11 @@ body {
 
 
 
-.navbar-light .navbar-brand {
+.navbar-dark .navbar-brand {
 	color : #ffdf00 ; 
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-dark .navbar-nav .nav-link {
 	color : #ffdf00 ; 
 }
 
