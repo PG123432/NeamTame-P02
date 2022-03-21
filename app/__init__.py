@@ -1,33 +1,84 @@
-# Neam Time - Pat Ging, Aaron Contreras, Deven Maheshwari, David Chong, Ryan Wang
-# SoftDev
-# P02 - Client-Side Shenanigans 
-# 2022-03-10
-
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, url_for, session
+from datetime import datetime
+import sqlite3
 import db
-#initializing stuffs
-app = Flask(__name__) 
-db.setup()
 
-####
+app = Flask(__name__) #create instance of class Flask
 
-@app.route("/")       #assign fxn to route
+DB_FILE = "WackAMole.db"
+
+@app.route("/", methods=["GET"])
+@app.route("/index", methods=["GET"])
 def index():
-	return render_template("index.html")
+    if session.get('username') is not None:
+        user_id = db.get_id(session["username"])
+        user = session['username']
+        return render_template("index.html", user=user)
+    else:
+        return render_template("index.html")
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if "username" in session:
+        return redirect(url_for("index"))
+
+    # GET request: display the form
+    if request.method == "GET":
+        return render_template("register.html")
+
+    if request.method == "POST":
+
+        # POST request: handle the form response and redirect
+        username = request.form.get("name", default="")
+        password = request.form.get("password", default="")
+        password2 = request.form.get("password2", default="")
+
+        error = db.signup(username, password)
+        if password != password2:
+            error = "Error: Passwords Must Match"
+
+        if error:
+            return render_template("register.html", error=error)
+        else:
+            db.signup(username, password)
+            return redirect(url_for("login"))
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if "username" in session:
+        return redirect(url_for("index"))
+
+    # GET request: display the form
+    if request.method == "GET":
+        return render_template("login.html")
+
+    if request.method == "POST":
+
+        # POST request: handle the form response and redirect
+        username = request.form.get("name", default="")
+        password = request.form.get("password", default="")
+
+        error = db.login(username, password)
+        if error:
+            return render_template('login.html', error=error)
+        else:
+            session['username'] = username
+            return redirect(url_for("index"))
+
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    if "username" in session:
+        del session["username"]
+    return redirect(url_for("index"))
 
 
 @app.route("/leaderboards")
 def leaderboards():
-	return render_template("leaderboards.html",
-				scores= db.getLeaderboard())
-
-@app.route("/signUp")
-def signUp():
-	return render_template("signUp.html")
-
-@app.route("/signIn")
-def signIn():
-	return render_template("signIn.html")
+	# db.addToLeaderboard("patrick", 69)
+	return render_template("leaderboards.html", scores= db.getLeaderboard())
 
 @app.route("/play")
 def play():
