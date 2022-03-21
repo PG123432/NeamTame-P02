@@ -142,7 +142,7 @@ def getLeaderboard():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    c.execute('SELECT * FROM leaderboard ORDER BY score DESC')
+    c.execute('SELECT * FROM leaderboard ORDER BY score DESC LIMIT 10')
     top = c.fetchall()
 
     db.commit()
@@ -152,7 +152,6 @@ def getLeaderboard():
 
 def main():
     update_topscore("Pat", 200)
-    prin
 
 
 if __name__ == "__main__":

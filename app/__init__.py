@@ -7,6 +7,8 @@ app = Flask(__name__) #create instance of class Flask
 
 DB_FILE = "WackAMole.db"
 
+db.setup()
+
 @app.route("/", methods=["GET"])
 @app.route("/index", methods=["GET"])
 def index():
