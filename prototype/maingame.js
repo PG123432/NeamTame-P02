@@ -41,12 +41,12 @@ let moleSpawn = () => {
   console.log("mole Spawned");
   console.log(requestID);
   window.cancelAnimationFrame(requestID);
-  
+
   clear();
   ctx.beginPath();
   ctx.drawImage(mole, x, y, mole.width, mole.height);
   ctx.rotate(Math.PI / 2);
- 
+
   if (whack) {
     stopIt();
   }
@@ -85,18 +85,13 @@ moleButton.addEventListener("click", setHole);
 let holeObj = [
   {
     "name": "hole1",
-    "xcord": 125,
-    "ycord": 250
+    "xcord": 170,
+    "ycord": 60
   },
   {
     "name": "hole2",
-    "xcord": 250,
-    "ycord": 250
-  },
-  {
-    "name": "hole3",
-    "xcord": 375,
-    "ycord": 250
+    "xcord": 900-170,
+    "ycord": 60
   }
   ]
 
