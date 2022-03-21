@@ -14,9 +14,8 @@
 body {
 	background-image: url("/static/img/8bit.jpg");
 	background-repeat: round;
+	color : #ffdf00 ; 
 }
-
-
 
 .navbar-dark .navbar-brand {
 	color : #ffdf00 ; 
