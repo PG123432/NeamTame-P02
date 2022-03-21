@@ -6,7 +6,13 @@
     <title>maingame</title>
   </head>
   <style>
-  #playground { border: 1px solid black }
+  #playground { 
+    border: 1px solid black;
+    background-image: url(./holes.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
   </style>
   <body id = "test">
   <h1>maingame</h1>
@@ -15,9 +21,12 @@
     <button id = "startGame">
         Start!
     </button>
+    <button id = "spawnMole">
+      Spawn Mole!
+    </button>
   </div>
 
-  <canvas width="500" height="500" id="playground">
+  <canvas width="900" height="692" id="playground">
   </canvas>
 
   <script src="maingame.js"></script>
