@@ -2,11 +2,12 @@ from flask import Flask, render_template, redirect, request, url_for, session
 from datetime import datetime
 import sqlite3
 import db
+from os import urandom
 
 app = Flask(__name__) #create instance of class Flask
+app.secret_key = urandom(32)
 
 DB_FILE = "WackAMole.db"
-
 db.setup()
 
 @app.route("/", methods=["GET"])
