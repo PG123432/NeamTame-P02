@@ -15,6 +15,7 @@ function draw() {
 
 draw()
 
+
 const start = document.getElementById("startGame");     //gets start game button
 const scoreBoard = document.getElementById("score");    //gets score button
 let lastHole;                                           //the last hole(prevents repeats)

@@ -47,9 +47,12 @@ devenM -- 2022-03-16 08:34
 Finished testing database. Added funcitons to get entire tables and update topscore values. 
 
 patrickG -- 2022-03-18 08:40
--changing the templares
--font changing
+- changing the templares
+- font changing
 - implementing the new leaderboard
+
+ryanW -- 2022-03-18 08:42
+- attempted to display background image on canvas. not successful.
 
 patrickG -- 2022-03-19 14:39
 - implementing new font
@@ -58,3 +61,7 @@ patrickG -- 2022-03-19 14:39
 - housekeeping
 - hamburger menu implemented 
 - ** BUG Hamburger menu wont uncollapse on some browsers...
+
+ryanW -- 2022-03-18 08:42
+- successfully displayed background image on canvas. draw() function in maingame.js
+- ** BUG (somewhat) dimensions of background image need to be adjusted
