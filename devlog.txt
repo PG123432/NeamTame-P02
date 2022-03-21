@@ -65,3 +65,9 @@ patrickG -- 2022-03-19 14:39
 ryanW -- 2022-03-18 08:42
 - successfully displayed background image on canvas. draw() function in maingame.js
 - ** BUG (somewhat) dimensions of background image need to be adjusted
+
+devenM -- 2022-03-21 15:09
+Changed templating for login and registration. Routing for all completed backend including
+login and registration as well as base. Fixed css for base pages. Created file structure
+to establish secret key and correct initialization of database. Specified top 10 columns for 
+leaderboard table in db.py. 
