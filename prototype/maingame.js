@@ -1,21 +1,5 @@
 const c = document.getElementById("playground");        //gets playground element
 var ctx = c.getContext("2d");                           //gives context
-
-
-// loads the image onto the canvas
-function draw() {
-  const c = document.getElementById("playground");        //gets playground element
-  var ctx = c.getContext("2d");                           //gives context
-  var img = new Image();
-  img.onload = function() {
-    ctx.drawImage(img, 0, 0);
-  };
-  img.src = 'holes.png';
-}
-
-draw()
-
-
 const start = document.getElementById("startGame");     //gets start game button
 const scoreBoard = document.getElementById("score");    //gets score button
 let lastHole;                                           //the last hole(prevents repeats)
@@ -32,10 +16,6 @@ var requestID;
 
 var mole = new Image(50, 50);
 mole.src = "mole.jpeg";
-
-var holes = new Image(c.width, c.height);
-holes.src = "holes.png";
-
 
 var clear = (e) => {
   console.log("clear invoked...")
@@ -142,8 +122,6 @@ function startGame() {                                //starts the game, resets 
   timeUp = false;
   score = 0;
   // attempting to draw the holes
-  
-  ctx.drawImage(holes, 0, 0);
 
   peep();
   setTimeout(() => timeUp = true, 10000)
