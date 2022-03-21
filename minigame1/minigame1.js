@@ -6,6 +6,7 @@ var c = document.getElementById("playground"); // GET CANVAS // GET DOT BUTTON
 var stopButton = document.getElementById("buttonStop"); // GET STOP BUTTON
 let hammerButton = document.getElementById("hammerButton"); 
 let warningButton = document.getElementById("buttonWarning"); 
+let moleButton = document.getElementById("buttonMole"); 
 
 //prepare to interact with canvas in 2D
 var ctx = c.getContext("2d"); // YOUR CODE HERE
@@ -36,6 +37,9 @@ malletImage.src = 'Mallet.png';
 let warningImage = new Image(40, 40);
 warningImage.src = 'Warning.png';
 
+let moleImage = new Image(40,60);
+moleImage.src = 'Mole.png';
+
 //initiate start x,y,dx,dy for image movement
 let x, y, dy, ay;
 
@@ -43,11 +47,11 @@ let fps, fpsInterval, startTime, now, then, elapsed,dfps;
 
 
 
+
 let setHammer = (e) => {
-  x = Math.floor(Math.random()*(c.width - malletImage.width));
-  y = malletImage.height;
+  //x = Math.floor(Math.random()*(c.width - malletImage.width));
+  //y = malletImage.height;
   dy = 0;
-  warning();
   window.cancelAnimationFrame(requestID);
   hammerFall();
 }
@@ -66,26 +70,45 @@ let setWarning = (e) => {
 }
 
 let warning = () => {
-  console.log("warning...")
-  console.log(requestID);
-  fpsInterval = 1000 / fps;
-  fps += dfps;
-  
-  window.cancelAnimationFrame(requestID);
-  clear();
-  
   now = Date.now();
-  elapsed = now - then;
 
-  if (elapsed > fpsInterval) {
-    then = now - (elapsed % fpsInterval);
+  if ((now - startTime) < 5000){
+    console.log("warning...")
+    console.log(requestID);
+    fpsInterval = 1000 / fps;
+    fps += dfps;
     
-    ctx.beginPath();
-    ctx.drawImage(warningImage, x, y, warningImage.width, warningImage.height);
-  }
-  requestID = window.requestAnimationFrame(warning);
+    window.cancelAnimationFrame(requestID);
+    clear();
+    
+    
+    elapsed = now - then;
 
+    if (elapsed > fpsInterval) {
+      then = now - (elapsed % fpsInterval);
+      
+      ctx.beginPath();
+      ctx.drawImage(warningImage, x, y, warningImage.width, warningImage.height);
+    }
+    requestID = window.requestAnimationFrame(warning);
+    console.log(startTime);
+  }
+  else{
+    stopIt();
+    setHammer();
+  }
+  
+    
+  
 };
+
+let molespawn = () => {
+  console.log("warning...")
+}
+
+
+
+
 
 let hammerFall = () => {
   console.log("hammers falling...");
@@ -100,14 +123,16 @@ let hammerFall = () => {
   ctx.drawImage(malletImage, x, y, malletImage.width, malletImage.height);
   ctx.rotate(Math.PI / 2);
  
-  if (y > 300) {
+  if (y < 500) {
+    y +=dy;
+    dy += ay;
+    requestID = window.requestAnimationFrame(hammerFall);
+  }
+  else{
     stopIt();
   }
   
-  y +=dy;
-  dy += ay;
-
-  requestID = window.requestAnimationFrame(hammerFall);
+  
 };
 
 //var stopIt = function() {
