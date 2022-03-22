@@ -10,8 +10,6 @@ var requestID;
 let setanimate = (e) =>{
   then = Date.now();
   startTime = then;
-
-  
 }
 
 
@@ -25,6 +23,7 @@ let animate = (e) => {
     then = now - (interval % 3000);
     setHole();
   }
+  
 }
 
 
