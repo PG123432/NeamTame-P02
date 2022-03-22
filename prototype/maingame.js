@@ -77,6 +77,8 @@ moleButton.addEventListener("click", setHole);
 // mole.src = "first_mole.jpeg";
 var mole = new Image(80, 80);
 mole.src = "diglett.png";
+mole.id = "molePic";
+document.body.appendChild(mole);
 
 // image dimensions (can be found in mainpage.html canvas)
 const x_max = 900
@@ -153,6 +155,13 @@ function whack() {                                    //adds score if clicked
   console.log("whacked!")
 }
 
-
-c.addEventListener( "click", whack);
+//Fix for scoring within canvas
+$('#molePic').on( "click", function(e){
+  {
+    alert(
+      "finally bruv"
+    )
+    whack()
+  }
+});
 start.addEventListener( "click", startGame);
