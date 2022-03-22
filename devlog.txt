@@ -75,3 +75,6 @@ leaderboard table in db.py.
 ryanW -- 2022-03-18 23:04
 - fixed ALL mole coords in list (mole coords are flexible and easily modified)
 - added new mole and adjustments for size, as well as easy way to switch to other mole data
+
+patrickG -- 2022-03-22 08:41
+- new endpoint for db game , testing tooo
