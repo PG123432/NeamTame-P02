@@ -87,23 +87,23 @@ def leaderboards():
 def play():
 	return render_template("play.html")
 
-@app.route("/addScore", methods =["GET", "POST"])
+@app.route("/addScore", methods =["POST"])
 def addScore():
-
-	if request.args.get("score") is not None:
-		if request.args.get("username") is not None:
+        args = request.get_json() #idk this just seemed to fix it
+	if args.get("score") is not None:
+		if request.values.get("username") is not None:
 			db.addToLeaderboard(
 				"Unnamed",
-				str(request.args.get("score"))
+				args.get("score")
 				)
 		else:
 			db.addToLeaderboard(
-				request.args.get("username"),
-				str(request.args.get("score"))
+				args.get("username"),
+				str(args.get("score"))
 				)	
-		return {"status": 200}
+		return {"status": 200} # success code
 	else:
-		return {"status": 400}
+                return {"status": 400} #something went wrong
 
 		
 

@@ -78,3 +78,7 @@ ryanW -- 2022-03-18 23:04
 
 patrickG -- 2022-03-22 08:41
 - new endpoint for db game , testing tooo
+
+
+patrickG -- 2022-03-22 10:13
+-fixing minor bug
