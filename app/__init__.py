@@ -87,6 +87,26 @@ def leaderboards():
 def play():
 	return render_template("play.html")
 
+@app.route("/addScore", methods =["GET", "POST"])
+def addScore():
+
+	if request.args.get("score") is not None:
+		if request.args.get("username") is not None:
+			db.addToLeaderboard(
+				"Unnamed",
+				str(request.args.get("score"))
+				)
+		else:
+			db.addToLeaderboard(
+				request.args.get("username"),
+				str(request.args.get("score"))
+				)	
+		return {"status": 200}
+	else:
+		return {"status": 400}
+
+		
+
 if __name__ == "__main__":  # true if this file NOT imported
     app.debug = True        # enable auto-reload upon code change
     app.run()
