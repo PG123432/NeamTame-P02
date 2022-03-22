@@ -14,9 +14,6 @@ var requestID;
 
 
 
-var mole = new Image(50, 50);
-mole.src = "mole.jpeg";
-
 var clear = (e) => {
   console.log("clear invoked...")
   ctx.clearRect(0, 0, c.width, c.height);
@@ -76,18 +73,22 @@ moleButton.addEventListener("click", setHole);
 
 
 
+// var mole = new Image(50, 50);
+// mole.src = "first_mole.jpeg";
+var mole = new Image(80, 80);
+mole.src = "diglett.png";
 
-
-
-
-// image dimensions
+// image dimensions (can be found in mainpage.html canvas)
 const x_max = 900
 const y_max = 692
-const offset = 50
 
-// left coords
-const left_x = 170
-const left_y = 60
+// ADJUSTABLE   [offset, left_x, left_y]
+let first_mole = [50, 170, 6]   // for size 50
+let diglett = [85, 155, 50]     // for size 80
+let chosen_mole = diglett
+const offset = chosen_mole[0]
+const left_x = chosen_mole[1]
+const left_y = chosen_mole[2]
 
 // right coords
 const right_x = x_max - left_x - offset
@@ -96,6 +97,14 @@ const right_y = y_max - left_y - offset
 // middle coords
 const middle_x = (left_x + right_x) / 2
 const middle_y = (left_y + right_y) / 2
+
+// leave here for debugging
+// SOLELY FOR DEBUGGING (USELESS OTHERWISE)
+let holeObj2 = [
+  {"name": "hole1", "xcord": left_x, "ycord": left_y},
+  {"name": "hole2", "xcord": middle_x, "ycord": middle_y},
+  {"name": "hole3", "xcord": right_x, "ycord": right_y}
+]
 
 let holeObj = [
   {"name": "hole1", "xcord": left_x, "ycord": left_y},
@@ -111,9 +120,11 @@ let holeObj = [
   {"name": "hole9", "xcord": right_x, "ycord": right_y},
 ]
 
+
 function randomTime(min, max) {                         //function for random time
     return Math.round(Math.random() * (max - min) + min);
 }
+
 
 function randomHole(holes){                             //function for random hole
     const index  = Math.floor(Math.random() * holes.length);
@@ -124,7 +135,6 @@ function randomHole(holes){                             //function for random ho
     lastHole = hole;
     return hole;
 }
-
 
 
 function startGame() {                                //starts the game, resets stats
