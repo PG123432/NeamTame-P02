@@ -9,25 +9,30 @@ var requestID;
 
 let setanimate = (e) =>{
   then = Date.now();
-  startTime = then; 
+  startTime = then;
+
+  
 }
 
-let animate = (e) =>{
+
+let animate = (e) => {
   now = Date.now();
-  stopwatch = now - startTime; 
+  stopwatch = now - startTime;
   countdown = 6000 - stopwatch;
-  interval = now - then;
+  interval = now - then
   console.log(countdown);
-  if (interval > 3000) {
+  if (interval > 3000){
     then = now - (interval % 3000);
-    setHole(); 
+    setHole();
   }
 }
+
 
 
 var clear = (e) => {
   console.log("clear invoked...")
   ctx.clearRect(0, 0, c.width, c.height);
+  // YOUR CODE HERE
 };
 let x, y;
 
@@ -36,7 +41,7 @@ let moleButton = document.getElementById("spawnMole");
 
 let setHole = (e) => {
   then = Date.now();
-  startTime = then; 
+  startTime = then;
   hole = randomHole(holeObj);
   x = hole.xcord;
   y = hole.ycord;
@@ -48,29 +53,29 @@ let setHole = (e) => {
 
 let moleSpawn = () => {
   now = Date.now();
-  elapsed = now - startTime ;
+  elapsed = now - startTime;
 
   if (elapsed < 5000){
     console.log("mole Spawned");
     console.log(requestID);
     window.cancelAnimationFrame(requestID);
   
-
-  clear();
-  ctx.beginPath();
-  ctx.drawImage(mole, x, y, mole.width, mole.height);
-  ctx.rotate(Math.PI / 2);
-
-  if (whack) {
-    stopIt();
+    clear();
+    ctx.beginPath();
+    ctx.drawImage(mole, x, y, mole.width, mole.height);
+    ctx.rotate(Math.PI / 2);
+  
+    if (whack) {
+      stopIt();
+    }
+  
+    requestID = window.requestAnimationFrame(moleSpawn);
   }
-
-  requestID = window.requestAnimationFrame(moleSpawn);
+  else{
+    clear();
+    return;
   }
-  else {
-    clear()
-    return; 
-  }
+  
 };
 
 var stopIt = () => {
@@ -94,13 +99,10 @@ moleButton.addEventListener("click", setHole);
 
 
 
-
 // var mole = new Image(50, 50);
 // mole.src = "first_mole.jpeg";
 var mole = new Image(80, 80);
 mole.src = "diglett.png";
-mole.id = "molePic";
-document.body.appendChild(mole);
 
 // image dimensions (can be found in mainpage.html canvas)
 const x_max = 900
@@ -167,8 +169,8 @@ function startGame() {                                //starts the game, resets 
   score = 0;
   // attempting to draw the holes
 
-  peep();
   setTimeout(() => timeUp = true, 10000)
+  setanimate();
   animate();
 }
 
@@ -178,15 +180,17 @@ function whack() {                                    //adds score if clicked
   console.log("whacked!")
 }
 
-//Fix for scoring within canvas
-$('#molePic').on( "click", function(e){
-  {
-    alert(
-      "finally bruv"
-    )
-    whack()
-  }
-});
 
-c.addEventListener( "click", whack)
+c.addEventListener( "click", whack);
 start.addEventListener( "click", startGame);
+
+
+// //Fix for scoring within canvas
+// $('#molePic').on( "click", function(e){
+//   {
+//     alert(
+//       "finally bruv"
+//     )
+//     whack()
+//   }
+// })
