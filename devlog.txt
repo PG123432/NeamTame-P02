@@ -71,3 +71,6 @@ Changed templating for login and registration. Routing for all completed backend
 login and registration as well as base. Fixed css for base pages. Created file structure
 to establish secret key and correct initialization of database. Specified top 10 columns for 
 leaderboard table in db.py. 
+
+ryanW -- 2022-03-18 23:04
+- fixed ALL mole coords in list (mole coords are flexible and easily modified)

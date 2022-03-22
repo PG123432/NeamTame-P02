@@ -80,21 +80,36 @@ moleButton.addEventListener("click", setHole);
 
 
 
+// image dimensions
+const x_max = 900
+const y_max = 692
+const offset = 50
 
+// left coords
+const left_x = 170
+const left_y = 60
+
+// right coords
+const right_x = x_max - left_x - offset
+const right_y = y_max - left_y - offset
+
+// middle coords
+const middle_x = (left_x + right_x) / 2
+const middle_y = (left_y + right_y) / 2
 
 let holeObj = [
-  {
-    "name": "hole1",
-    "xcord": 170,
-    "ycord": 60
-  },
-  {
-    "name": "hole2",
-    "xcord": 900-170,
-    "ycord": 60
-  }
-  ]
+  {"name": "hole1", "xcord": left_x, "ycord": left_y},
+  {"name": "hole2", "xcord": left_x, "ycord": middle_y},
+  {"name": "hole3", "xcord": left_x, "ycord": right_y},
 
+  {"name": "hole4", "xcord": middle_x, "ycord": left_y},
+  {"name": "hole5", "xcord": middle_x, "ycord": middle_y},
+  {"name": "hole6", "xcord": middle_x, "ycord": right_y},
+
+  {"name": "hole7", "xcord": right_x, "ycord": left_y},
+  {"name": "hole8", "xcord": right_x, "ycord": middle_y},
+  {"name": "hole9", "xcord": right_x, "ycord": right_y},
+]
 
 function randomTime(min, max) {                         //function for random time
     return Math.round(Math.random() * (max - min) + min);
