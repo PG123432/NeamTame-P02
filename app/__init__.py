@@ -89,20 +89,20 @@ def play():
 
 @app.route("/addScore", methods =["POST"])
 def addScore():
-        args = request.get_json() #idk this just seemed to fix it
-	if args.get("score") is not None:
-		if request.values.get("username") is not None:
-			db.addToLeaderboard(
-				"Unnamed",
-				args.get("score")
-				)
-		else:
-			db.addToLeaderboard(
-				args.get("username"),
-				str(args.get("score"))
-				)	
-		return {"status": 200} # success code
-	else:
+    args = request.get_json() #idk this just seemed to fix it
+    if args.get("score") is not None:
+        if request.values.get("username") is not None:
+            db.addToLeaderboard(
+                "Unnamed",
+                args.get("score")
+                )
+        else:
+            db.addToLeaderboard(
+                args.get("username"),
+                str(args.get("score"))
+                )	
+        return {"status": 200} # success code
+    else:
                 return {"status": 400} #something went wrong
 
 		

@@ -7,17 +7,27 @@ let timeUp = false;                                     //checks if time is up
 let score = 0;                                          //score of the user
 var requestID;
 
+let setanimate = (e) =>{
+  then = Date.now();
+  startTime = then; 
+}
 
-
-
-
-
+let animate = (e) =>{
+  now = Date.now();
+  stopwatch = now - startTime; 
+  countdown = 6000 - stopwatch;
+  interval = now - then;
+  console.log(countdown);
+  if (interval > 3000) {
+    then = now - (interval % 3000);
+    setHole(); 
+  }
+}
 
 
 var clear = (e) => {
   console.log("clear invoked...")
   ctx.clearRect(0, 0, c.width, c.height);
-  // YOUR CODE HERE
 };
 let x, y;
 
@@ -25,6 +35,8 @@ let moleButton = document.getElementById("spawnMole");
 
 
 let setHole = (e) => {
+  then = Date.now();
+  startTime = then; 
   hole = randomHole(holeObj);
   x = hole.xcord;
   y = hole.ycord;
@@ -35,9 +47,14 @@ let setHole = (e) => {
 
 
 let moleSpawn = () => {
-  console.log("mole Spawned");
-  console.log(requestID);
-  window.cancelAnimationFrame(requestID);
+  now = Date.now();
+  elapsed = now - startTime ;
+
+  if (elapsed < 5000){
+    console.log("mole Spawned");
+    console.log(requestID);
+    window.cancelAnimationFrame(requestID);
+  
 
   clear();
   ctx.beginPath();
@@ -49,6 +66,11 @@ let moleSpawn = () => {
   }
 
   requestID = window.requestAnimationFrame(moleSpawn);
+  }
+  else {
+    clear()
+    return; 
+  }
 };
 
 var stopIt = () => {
@@ -147,6 +169,7 @@ function startGame() {                                //starts the game, resets 
 
   peep();
   setTimeout(() => timeUp = true, 10000)
+  animate();
 }
 
 function whack() {                                    //adds score if clicked
@@ -164,4 +187,6 @@ $('#molePic').on( "click", function(e){
     whack()
   }
 });
+
+c.addEventListener( "click", whack)
 start.addEventListener( "click", startGame);

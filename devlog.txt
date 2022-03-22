@@ -79,6 +79,9 @@ ryanW -- 2022-03-18 23:04
 patrickG -- 2022-03-22 08:41
 - new endpoint for db game , testing tooo
 
-
 patrickG -- 2022-03-22 10:13
 -fixing minor bug
+
+devenM -- 20220-03-22 12:23
+Added animation and scoring to maingame js in order to have mole respawning and click scoring function. 
+Fixed indenation on init
