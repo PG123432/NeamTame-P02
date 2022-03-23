@@ -7,6 +7,10 @@ let timeUp = false;                                     //checks if time is up
 let score = 0;                                          //score of the user
 var requestID;
 
+
+
+
+
 let setanimate = (e) =>{
   then = Date.now();
   startTime = then;
@@ -180,7 +184,25 @@ function whack() {                                    //adds score if clicked
 }
 
 
-c.addEventListener( "click", whack);
+
+var canvasX, canvasY;
+
+c.addEventListener("mousemove", function(e) { 
+    var cRect = c.getBoundingClientRect();        // Gets CSS pos, and width/height
+    canvasX = Math.round(e.clientX - cRect.left);  // Subtract the 'left' of the canvas 
+    canvasY = Math.round(e.clientY - cRect.top);   // from the X/Y positions to make  
+    console.log("tracking mouse");
+});
+
+c.addEventListener( "click", function(e){
+    console.log(x)
+    console.log(canvasX)
+    console.log(y)
+    console.log(canvasY)
+    if(canvasX - x < 50 && canvasY-y < 50){
+      whack()
+    }
+});
 start.addEventListener( "click", startGame);
 
 
