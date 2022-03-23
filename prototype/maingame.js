@@ -195,10 +195,8 @@ c.addEventListener("mousemove", function(e) {
 });
 
 c.addEventListener( "click", function(e){
-    console.log(x)
-    console.log(canvasX)
-    console.log(y)
-    console.log(canvasY)
+    console.log("             mole (x, y): (" + x + ", " + y + ")" )
+    console.log("mouse (canvasX, canvasY): (" + canvasX + ", " + canvasY + ")" )
     if(canvasX - x < 50 && canvasY-y < 50){
       whack()
     }
