@@ -8,30 +8,6 @@ let score = 0;                                          //score of the user
 var requestID;
 
 
-
-
-
-let setanimate = (e) =>{
-  then = Date.now();
-  startTime = then;
-}
-
-
-let animate = (e) => {
-  now = Date.now();
-  stopwatch = now - startTime;
-  countdown = 6000 - stopwatch;
-  interval = now - then
-  console.log(countdown);
-  if (interval > 3000){
-    then = now - (interval % 3000);
-    setHole();
-  }
-  
-}
-
-
-
 var clear = (e) => {
   console.log("clear invoked...")
   ctx.clearRect(0, 0, c.width, c.height);
@@ -166,15 +142,37 @@ function randomHole(holes){                             //function for random ho
 }
 
 
-function startGame() {                                //starts the game, resets stats
-  scoreBoard.textContent = 0;
-  timeUp = false;
-  score = 0;
-  // attempting to draw the holes
+function sleep(ms) {
+  const time = Date.now()
 
-  setTimeout(() => timeUp = true, 10000)
-  setanimate();
-  animate();
+  while (true) {
+    current = Date.now()
+
+    if(current - time >= ms){
+      break
+    }
+
+  }
+
+}
+
+function startGame() {
+
+
+  while (true) {
+    s = Date.now()
+    setHole()
+    console.log("yeet")
+    sleep(500)
+
+
+  }
+
+  scoreBoard.textContent = 0;
+  score = 0;
+
+
+
 }
 
 function whack() {                                    //adds score if clicked
