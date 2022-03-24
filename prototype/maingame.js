@@ -22,44 +22,42 @@ let setanimate = (e) =>{
 
 
 let animate = (e) => {
-  
-  window.cancelAnimationFrame(requestID);
-  now = Date.now();
-  stopwatch = now - startTime;
-  countdown = 60000 - stopwatch;
-  moleDurationTimer = Date.now() - then;
-
-  console.log(countdown);
-
-
-  /*if (moleSpawnTimer > moleperiod){
-    moleSpawnTimer =  moleSpawnTimer % moleperiod;
-    hole = randomHole(holeObj);
-    x = hole.xcord;
-    y = hole.ycord;
-  } */
-
-  if (moleDurationTimer < moleDuration){
-    clear();
-    moleSpawn(x,y);
+  if (countdown <= 0){
+    stopIt();
+    return;
   }
   else{
-    moleDurationTimer = moleDurationTimer % moleDuration;
-    then = Date.now();
-    hole = randomHole(holeObj);
-    x = hole.xcord;
-    y = hole.ycord;
+
+    window.cancelAnimationFrame(requestID);
+    now = Date.now();
+    stopwatch = now - startTime;
+    countdown = 6000 - stopwatch;
+    moleDurationTimer = Date.now() - then;
+
+    console.log(countdown);
+
+
+    /*if (moleSpawnTimer > moleperiod){
+      moleSpawnTimer =  moleSpawnTimer % moleperiod;
+      hole = randomHole(holeObj);
+      x = hole.xcord;
+      y = hole.ycord;
+    } */
+
+    if (moleDurationTimer < moleDuration){
+      clear();
+      moleSpawn(x,y);
+    }
+    else{
+      moleDurationTimer = moleDurationTimer % moleDuration;
+      then = Date.now();
+      hole = randomHole(holeObj);
+      x = hole.xcord;
+      y = hole.ycord;
+    }
   }
-
-
-
-  
-
-  
-
-  requestID = window.requestAnimationFrame(animate);
+    requestID = window.requestAnimationFrame(animate);
 }
-
 
 
 var clear = (e) => {
