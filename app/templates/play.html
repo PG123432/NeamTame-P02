@@ -1,5 +1,31 @@
 {% extends "index.html" %}	
 
 {% block content %}
-	play
+	<style>
+    #playground { 
+      border: 1px solid black;
+      cursor: url("/static/js/Emoji_hammer.png"), crosshair;
+      background-image: url("/static/js/holes.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  </style>
+  <body id = "test">
+  
+    <center>
+    <h1 style="color: white; text-align: center; font-size: 100px; font-weight: bold; font-family: SpaceInvaders;">Play!</h1>
+
+      <p style="color: white; text-align: center; font-weight: bold; font-family: SpaceInvaders;">Score: </p><p id = "score" style="color: white; text-align: center; font-weight: bold; font-family: SpaceInvaders;">0</p>
+      <div>
+
+      <button id = "startGame" type="button" class="btn-lg btn-warning" > <a style="font-family: SpaceInvaders;"> Start Game! </a> </button>
+
+      </div>
+      <canvas width="900" height="692" id="playground"></canvas>
+  </center>
+
+  </body> 
+
+  <script src="{{ url_for('static', filename='js/maingame.js') }}"></script>
 {% endblock %}
