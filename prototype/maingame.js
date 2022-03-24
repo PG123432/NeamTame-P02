@@ -12,10 +12,10 @@ var gameOver = new Image(80, 80);
 gameOver.src = "game_over.png";
 
 
-let moleDuration, moleDurationTimer, stopwatch, countdown, then;                         //constants: moleperiod is the time between moles spawning, moleduration is how long the moles stay on screen (milliseconds)
+let moleDuration, moleDurationTimer, stopwatch, countdown, then;                         //moleduration(ms): how long the mole stays on the screen
 
 
-let setanimate = (e) =>{
+let setanimate = (e) =>{                                                                  
   startTime = Date.now();
   then = startTime;                                 
   moleDuration = 1000;
