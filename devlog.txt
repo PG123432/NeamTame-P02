@@ -95,3 +95,7 @@ patrickG -- 2022-03-23 09:13
 
 ryanW -- 2022-03-23 22:55
 - added a hammer cursor
+
+ryanW -- 2022-03-24 00:39
+- fixed a bug where top left would add to score
+- (I used abs value for distance and offset x and y values)

@@ -18,7 +18,7 @@ let moleDuration, moleDurationTimer, stopwatch, countdown, then;                
 let setanimate = (e) =>{                                                                  
   startTime = Date.now();
   then = startTime;                                 
-  moleDuration = 1000;
+  moleDuration = 500;
   stopwatch = 0;
 }
 
