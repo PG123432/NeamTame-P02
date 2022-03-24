@@ -8,6 +8,60 @@ let score = 0;                                          //score of the user
 var requestID;
 
 
+
+
+let moleDuration, moleDurationTimer, stopwatch, countdown, then;                         //constants: moleperiod is the time between moles spawning, moleduration is how long the moles stay on screen (milliseconds)
+
+
+let setanimate = (e) =>{
+  startTime = Date.now();
+  then = startTime;                                 
+  moleDuration = 1000;
+  stopwatch = 0;
+}
+
+
+let animate = (e) => {
+  
+  window.cancelAnimationFrame(requestID);
+  now = Date.now();
+  stopwatch = now - startTime;
+  countdown = 60000 - stopwatch;
+  moleDurationTimer = Date.now() - then;
+
+  console.log(countdown);
+
+
+  /*if (moleSpawnTimer > moleperiod){
+    moleSpawnTimer =  moleSpawnTimer % moleperiod;
+    hole = randomHole(holeObj);
+    x = hole.xcord;
+    y = hole.ycord;
+  } */
+
+  if (moleDurationTimer < moleDuration){
+    clear();
+    moleSpawn(x,y);
+  }
+  else{
+    moleDurationTimer = moleDurationTimer % moleDuration;
+    then = Date.now();
+    hole = randomHole(holeObj);
+    x = hole.xcord;
+    y = hole.ycord;
+  }
+
+
+
+  
+
+  
+
+  requestID = window.requestAnimationFrame(animate);
+}
+
+
+
 var clear = (e) => {
   console.log("clear invoked...")
   ctx.clearRect(0, 0, c.width, c.height);
@@ -18,43 +72,11 @@ let x, y;
 let moleButton = document.getElementById("spawnMole");
 
 
-let setHole = (e) => {
-  then = Date.now();
-  startTime = then;
-  hole = randomHole(holeObj);
-  x = hole.xcord;
-  y = hole.ycord;
-  window.cancelAnimationFrame(requestID);
-  moleSpawn();
-}
 
-
-
-let moleSpawn = () => {
-  now = Date.now();
-  elapsed = now - startTime;
-
-  if (elapsed < 5000){
-    console.log("mole Spawned");
-    console.log(requestID);
-    window.cancelAnimationFrame(requestID);
-  
-    clear();
-    ctx.beginPath();
+let moleSpawn = (x,y) => {
+    moleTimer = 0;
     ctx.drawImage(mole, x, y, mole.width, mole.height);
     ctx.rotate(Math.PI / 2);
-  
-    if (whack) {
-      stopIt();
-    }
-  
-    requestID = window.requestAnimationFrame(moleSpawn);
-  }
-  else{
-    clear();
-    return;
-  }
-  
 };
 
 var stopIt = () => {
@@ -63,7 +85,7 @@ var stopIt = () => {
   window.cancelAnimationFrame(requestID);
 };
 
-moleButton.addEventListener("click", setHole);
+
 
 
 
@@ -142,37 +164,15 @@ function randomHole(holes){                             //function for random ho
 }
 
 
-function sleep(ms) {
-  const time = Date.now()
-
-  while (true) {
-    current = Date.now()
-
-    if(current - time >= ms){
-      break
-    }
-
-  }
-
-}
-
-function startGame() {
-
-
-  while (true) {
-    s = Date.now()
-    setHole()
-    console.log("yeet")
-    sleep(500)
-
-
-  }
-
+function startGame() {                                //starts the game, resets stats
   scoreBoard.textContent = 0;
+  timeUp = false;
   score = 0;
+  // attempting to draw the holes
 
-
-
+  setTimeout(() => timeUp = true, 10000)
+  setanimate();
+  animate();
 }
 
 function whack() {                                    //adds score if clicked
