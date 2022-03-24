@@ -2,12 +2,14 @@ const c = document.getElementById("playground");        //gets playground elemen
 var ctx = c.getContext("2d");                           //gives context
 const start = document.getElementById("startGame");     //gets start game button
 const scoreBoard = document.getElementById("score");    //gets score button
+const timer = document.getElementById("timer");
 let lastHole;                                           //the last hole(prevents repeats)
 let timeUp = false;                                     //checks if time is up
 let score = 0;                                          //score of the user
 var requestID;
 
-
+var gameOver = new Image(80, 80);
+gameOver.src = "game_over.png";
 
 
 let moleDuration, moleDurationTimer, stopwatch, countdown, then;                         //constants: moleperiod is the time between moles spawning, moleduration is how long the moles stay on screen (milliseconds)
@@ -22,9 +24,11 @@ let setanimate = (e) =>{
 
 
 let animate = (e) => {
+  timer.textContent = Math.floor(countdown/1000);
   if (countdown <= 0){
-    stopIt();
-    return;
+    clear();
+    window.cancelAnimationFrame(requestID);
+    end();
   }
   else{
 
@@ -56,8 +60,16 @@ let animate = (e) => {
       y = hole.ycord;
     }
   }
-    requestID = window.requestAnimationFrame(animate);
+
+
+
+  
+
+  
+
+  requestID = window.requestAnimationFrame(animate);
 }
+
 
 
 var clear = (e) => {
@@ -70,6 +82,12 @@ let x, y;
 let moleButton = document.getElementById("spawnMole");
 
 
+let end = () =>{
+  console.log("end")
+ // window.cancelAnimationFrame(requestID);
+  ctx.drawImage(gameOver, 250, 200, gameOver.width*4, gameOver.height*4);
+  //requestID = window.requestAnimationFrame(end);
+}
 
 let moleSpawn = (x,y) => {
     moleTimer = 0;
@@ -173,7 +191,7 @@ function startGame() {                                //starts the game, resets 
   animate();
 }
 
-function whack() {                                    //adds score if clicked
+function whack() {                                   //adds score if clicked
   score++;
   scoreBoard.textContent = score;
   console.log("whacked!")
@@ -194,7 +212,7 @@ c.addEventListener( "click", function(e){
     console.log("             mole (x, y): (" + x + ", " + y + ")" )
     console.log("mouse (canvasX, canvasY): (" + canvasX + ", " + canvasY + ")" )
     if(canvasX - x < 50 && canvasY-y < 50){
-      whack()
+      whack();
     }
 });
 start.addEventListener( "click", startGame);
