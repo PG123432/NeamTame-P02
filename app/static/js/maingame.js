@@ -8,7 +8,7 @@ let timeUp = false;                                     //checks if time is up
 let score = 0;                                          //score of the user
 var requestID;
 
-var gameOver = new Image(80, 80);
+let gameOver = new Image(80, 80);
 gameOver.src = "game_over.png";
 
 
@@ -25,17 +25,17 @@ let setanimate = (e) =>{
 
 let animate = (e) => {
   timer.textContent = Math.floor(countdown/1000);
-  if (countdown <= 0){
+  if (countdown <= 500){
     clear();
     window.cancelAnimationFrame(requestID);
-    end();
+    timer.textContent = "Game Over";
   }
   else{
 
     window.cancelAnimationFrame(requestID);
     now = Date.now();
     stopwatch = now - startTime;
-    countdown = 6000 - stopwatch;
+    countdown = 60000 - stopwatch;
     moleDurationTimer = Date.now() - then;
 
     console.log(countdown);
@@ -81,13 +81,6 @@ let x, y;
 
 let moleButton = document.getElementById("spawnMole");
 
-
-let end = () =>{
-  console.log("end")
- // window.cancelAnimationFrame(requestID);
-  ctx.drawImage(gameOver, 250, 200, gameOver.width*4, gameOver.height*4);
-  //requestID = window.requestAnimationFrame(end);
-}
 
 let moleSpawn = (x,y) => {
     moleTimer = 0;
