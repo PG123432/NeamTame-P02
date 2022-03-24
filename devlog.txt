@@ -89,6 +89,9 @@ Fixed indenation on init
 ryanW -- 2022-03-22 23:10
 - discovered that adding event listeners to object within a canvas is not possible...
 
+aaronC -- 2022-03-23 23:50
+- added timer and made the mole respawn time based
+
 patrickG -- 2022-03-23 09:13
 - fixing minor bugs in templates in regards to it's links
 - adding "empty" functionality to the leaderboard
